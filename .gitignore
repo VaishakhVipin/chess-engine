@@ -216,3 +216,13 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Large files & checkpoints
+data/Fischer.pgn
+data/Fischer.zip
+checkpoints/
+lichess_bot_auto_logs/
+
+# Temporary test files
+test_*.py
+analyze_*.py

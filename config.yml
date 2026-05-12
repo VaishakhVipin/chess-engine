@@ -1,0 +1,36 @@
+token: "YOUR_LICHESS_TOKEN_HERE"
+
+engine:
+  dir: ./
+  name: fischer_engine
+  protocol: uci
+  uci_options:
+    depth: 3
+
+time_management:
+  blitz: 0.5
+  rapid: 1.0
+  classical: 5.0
+
+opening_book:
+  enabled: false
+
+challenge:
+  accept_bot: true
+  accept_titled: true
+  max_increment: 180
+  min_rating: 0
+  max_rating: 3000
+
+polyglot:
+  enabled: false
+
+gamoil:
+  enabled: false
+
+syzygy:
+  enabled: false
+
+logging:
+  console: true
+  file: null
