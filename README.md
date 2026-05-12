@@ -9,6 +9,8 @@ A hybrid chess engine that combines:
 ## Features
 
 - Plays in Fischer's style (aggressive, positional)
+- Smart opening play (no reckless queen moves like Qg4)
+- Penalizes weak opening moves to avoid "quirky dumb stuff"
 - Adaptive time management (blitz → rapid → classical)
 - Estimated rating: **1500–1700 Elo**
 - Can be deployed as a Lichess bot
@@ -67,6 +69,20 @@ Combines three components:
 3. **Material + activity bonuses**: Piece values, centralization, king safety, forcing moves
 
 Minimax with alpha-beta pruning (depth 2–4 depending on time control).
+
+**Opening Safeguards:**
+- Heavily penalizes queen moves to aggressive squares (rank 4+ for White, 5- for Black)
+- Completely avoids queen moves in first 3 moves
+- Penalizes undefended queen moves
+- Filters to top 12 moves in opening (first 10 moves) for speed
+- Boosts king safety evaluation in opening phase
+
+**Tactical Safeguards:**
+- Heavily penalizes hanging pieces (attacked but undefended)
+- Evaluates defenders before abandoning pieces
+- Prevents material loss from blunders
+
+Result: Plays solid opening principles, avoids tactical blunders like Qg4 or leaving pieces hanging.
 
 ### Training (`src/train.py`)
 Behavioral cloning on 33,756 Fischer game positions:
